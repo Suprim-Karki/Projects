@@ -56,7 +56,7 @@ body {
     {% for post in posts reversed %}
     <div class="card">
       <a style="text-decoration: none; color: black;" href="/post/{{post.id}}">
-        <h2>{{post.title}}</h2>
+        <h2>{{post.titles}}</h2>
         <h5>{{post.created_at}}</h5>
         <p>{{post.body|truncatewords:20}}</p>
       </a>
