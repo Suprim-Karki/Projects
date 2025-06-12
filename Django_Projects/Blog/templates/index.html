@@ -43,6 +43,20 @@ body {
     padding: 0;
   }
 }
+#addpostdiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+#addpostbtn{
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 17px;
+  padding: 0.5rem 1rem;
+  color: white;
+  background: black;
+}
 </style>
 </head>
 <body>
@@ -63,8 +77,9 @@ body {
     </div>
     {% endfor %}
   </div>
-  <a href="addpost"></a>
 </div>
-
+<div id="addpostdiv">
+<a href="addpost" id="addpostbtn">Add Post</a>
+</div>
 </body>
 </html>
