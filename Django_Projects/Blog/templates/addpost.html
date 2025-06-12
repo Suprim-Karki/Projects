@@ -1,11 +1,16 @@
 <h1>Add Your Blog Below</h1>
 
-<form action="addedpost" method="POST">
+{% for message in messages%}
+<h3 style="color: green;">{{message}}</h3>
+{% endfor %}
+
+<form action="addpost" method="POST">
+    {% csrf_token %}
     Title: <br>
-    <input type="text" name="title"><br>
+    <input type="text" name="topic"><br>
     Description: <br>
-    <textarea name="description" rows="8" cols="30"></textarea><br>
+    <textarea name="desc" rows="8" cols="30"></textarea><br>
     Datetime: <br>
-    <input type="datetime" name="datetime"><br><br>
+    <input type="datetime-local" name="created_at"><br><br>
     <input type="submit">
 </form>
