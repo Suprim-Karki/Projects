@@ -9,3 +9,6 @@ def index(request):
 def post(request,x):
     posts = Post.objects.get(id=x)
     return render(request,'post.html',{'posts':posts})
+
+def addpost(request):
+    return render(request,'addpost.html')
