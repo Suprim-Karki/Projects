@@ -19,5 +19,5 @@ def index(request):
         print(json_data)
     else:
         city='Enter a City'
-        data=''
+        data={}
     return render(request,'index.html',{'data':data,'city':city})
