@@ -42,3 +42,11 @@ class Experience(models.Model):
 
     def __str__(self):
         return f"{self.title} at {self.company}"
+    
+class Skill(models.Model):
+    SKILL_TYPES = [
+        ('LANG', 'Programming Language'),
+        ('FRAME', 'Framework'),
+        ('TOOL', 'Tool'),
+        ('OTHER', 'Other'),
+    ]
