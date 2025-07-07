@@ -20,3 +20,18 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+class Experience(models.Model):
+    EXPERIENCE_TYPES = [
+        ('WORK', 'Work Experience'),
+        ('EDU', 'Education'),
+    ]
+    
+    type = models.CharField(max_length=4, choices=EXPERIENCE_TYPES)
+    title = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, blank=True)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+    current = models.BooleanField(default=False)
+    description = models.TextField(blank=True)
+    order = models.PositiveIntegerField(default=0)
