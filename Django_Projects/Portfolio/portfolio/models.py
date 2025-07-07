@@ -50,3 +50,15 @@ class Skill(models.Model):
         ('TOOL', 'Tool'),
         ('OTHER', 'Other'),
     ]
+
+    name = models.CharField(max_length=50)
+    type = models.CharField(max_length=5, choices=SKILL_TYPES)
+    proficiency = models.PositiveIntegerField(default=80)  # 0-100
+    order = models.PositiveIntegerField(default=0)
+    icon_class = models.CharField(max_length=50, blank=True)  # For icon libraries
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return self.name
