@@ -10,3 +10,11 @@ class ContactForm(forms.Form):
             'placeholder': 'Your Name'
         })
     )
+
+    email = forms.EmailField(
+        validators=[EmailValidator()],
+        widget=forms.EmailInput(attrs={
+            'class': 'form-input',
+            'placeholder': 'Your Email'
+        })
+    )
