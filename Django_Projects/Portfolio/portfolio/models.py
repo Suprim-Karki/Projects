@@ -35,3 +35,10 @@ class Experience(models.Model):
     current = models.BooleanField(default=False)
     description = models.TextField(blank=True)
     order = models.PositiveIntegerField(default=0)
+
+
+    class Meta:
+        ordering = ['-end_date', '-start_date']
+
+    def __str__(self):
+        return f"{self.title} at {self.company}"
