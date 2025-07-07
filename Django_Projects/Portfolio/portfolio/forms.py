@@ -34,3 +34,8 @@ class ContactForm(forms.Form):
             'rows': 5
         })
     )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        # Add any custom validation here
+        return cleaned_data
