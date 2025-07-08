@@ -15,5 +15,15 @@
     <meta property="og:description" content="Professional portfolio of [Your Name], showcasing projects, skills, and experience.">
     <meta property="og:image" content="{% static 'images/social-preview.jpg' %}">
 
+     <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:title" content="[Your Name] | Professional Portfolio">
+    <meta property="twitter:description" content="Professional portfolio of [Your Name], showcasing projects, skills, and experience.">
+    <meta property="twitter:image" content="{% static 'images/social-preview.jpg' %}">
+
+    <title>{% block title %}[Your Name] | Professional Portfolio{% endblock %}</title>
+    
+
 </head>
 </html>
