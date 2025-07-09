@@ -39,7 +39,43 @@
                 A selection of my recent work. Each project comes with its own unique challenges and solutions.
             </p>
         </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for project in featured_projects %}
+            <div class="project-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ project.title }}</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">{{ project.short_description }}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            {% for tech in project.technologies.split %}
+                            <span class="px-2 py-1 text-xs rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200">
+                                {{ tech }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                        <a href="{% url 'projects' %}#project-{{ project.id }}" 
+                           class="text-indigo-600 dark:text-indigo-400 font-medium hover:underline inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
         
+        <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="300">
+            <a href="{% url 'projects' %}" class="btn-primary">
+                View All Projects
+            </a>
+        </div>
       
     </div>
 </section>
