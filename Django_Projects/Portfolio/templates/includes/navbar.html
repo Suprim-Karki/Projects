@@ -35,6 +35,19 @@
         </div>
     </div>
     
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="{% url 'home' %}" class="block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="{% url 'about' %}" class="block px-3 py-2 rounded-md text-base font-medium">About</a>
+            <a href="{% url 'projects' %}" class="block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+            <a href="{% url 'resume' %}" class="block px-3 py-2 rounded-md text-base font-medium">Resume</a>
+            <a href="{% url 'contact' %}" class="block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            <button id="mobile-theme-toggle" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium">
+                Toggle Dark Mode
+            </button>
+        </div>
+    </div>
         </div>
             
 </nav>
