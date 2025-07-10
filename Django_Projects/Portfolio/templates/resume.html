@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resume | {{ block.super }}{% endblock %}
+
+{% block content %}
+<section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Resume</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                A timeline of my professional journey and education.
+            </p>
+            <div class="mt-8">
+                <a href="{% static 'resume.pdf' %}" download 
+                   class="btn-primary inline-flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    Download PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Work Experience -->
+        <div class="mb-20" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-2">
+                Work Experience
+            </h2>
+            
+            <div class="timeline">
+                {% for exp in work_experiences %}
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:50 }}">
+                    <div class="timeline-dot bg-indigo-600 dark:bg-indigo-400"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            {{ exp.start_date|date:"M Y" }} - 
+                            {% if exp.current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                        </div>
+                        <h3 class="timeline-title">{{ exp.title }}</h3>
+                        <div class="timeline-company">{{ exp.company }} • {{ exp.location }}</div>
+                        <div class="timeline-description">
+                            {{ exp.description|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Education -->
+        <div data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-200 dark:border-gray-700 pb-2">
+                Education
+            </h2>
+            
+            <div class="timeline">
+                {% for edu in educations %}
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:50 }}">
+                    <div class="timeline-dot bg-purple-600 dark:bg-purple-400"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            {{ edu.start_date|date:"M Y" }} - 
+                            {% if edu.current %}Present{% else %}{{ edu.end_date|date:"M Y" }}{% endif %}
+                        </div>
+                        <h3 class="timeline-title">{{ edu.title }}</h3>
+                        <div class="timeline-company">{{ edu.company }} • {{ edu.location }}</div>
+                        {% if edu.description %}
+                        <div class="timeline-description">
+                            {{ edu.description|linebreaks }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
