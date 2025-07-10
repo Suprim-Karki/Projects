@@ -42,9 +42,42 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </section>
 
+<!-- Skills Section -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Skills & Technologies</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                I've worked with a wide range of technologies in my career. Here are the ones I'm most proficient in.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {% for skill in skills %}
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:50 }}">
+                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col items-center text-center">
+                    {% if skill.icon_class %}
+                    <div class="text-4xl mb-4 text-indigo-600 dark:text-indigo-400">
+                        <i class="{{ skill.icon_class }}"></i>
+                    </div>
+                    {% else %}
+                    <div class="w-12 h-12 mb-4 bg-indigo-100 dark:bg-indigo-900/50 rounded-full flex items-center justify-center">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ skill.name|slice:":1" }}</span>
+                    </div>
+                    {% endif %}
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">{{ skill.name }}</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-auto">
+                        <div class="bg-indigo-600 dark:bg-indigo-400 h-2 rounded-full" 
+                             style="width: {{ skill.proficiency }} %"></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
