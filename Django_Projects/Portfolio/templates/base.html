@@ -1,57 +1,58 @@
-{% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en" class="{% if request.session.dark_mode %}dark{% endif %}">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio of [Your Name], showcasing projects, skills, and experience.">
-    <meta name="keywords" content="portfolio, developer, designer, [Your Skills]">
-    <meta name="author" content="[Your Name]">
-
-     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:title" content="[Your Name] | Professional Portfolio">
-    <meta property="og:description" content="Professional portfolio of [Your Name], showcasing projects, skills, and experience.">
-    <meta property="og:image" content="{% static 'images/social-preview.jpg' %}">
-
-     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
-    <meta property="twitter:title" content="[Your Name] | Professional Portfolio">
-    <meta property="twitter:description" content="Professional portfolio of [Your Name], showcasing projects, skills, and experience.">
-    <meta property="twitter:image" content="{% static 'images/social-preview.jpg' %}">
-
-    <title>{% block title %}[Your Name] | Professional Portfolio{% endblock %}</title>
-    
-     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    {% tailwind_css %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom styles that work with CDN -->
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
-
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans antialiased transition-colors duration-300">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
     {% include 'includes/navbar.html' %}
     
-    <main class="pt-16">
+    <main class="pt-16 min-h-screen">
         {% block content %}{% endblock %}
     </main>
-    
-    {% include 'includes/footer.html' %}
-    {% include 'includes/scripts.html' %}
-</body>
 
+    {% include 'includes/footer.html' %}
+    
+    <!-- Simple dark mode toggle script -->
+    <script>
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        }
+        
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
 </html>

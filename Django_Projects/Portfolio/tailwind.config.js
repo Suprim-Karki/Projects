@@ -1,7 +1,7 @@
 module.exports = {
   content: [
     './templates/**/*.html',
-    './core/**/*.py',
+    './portfolio/**/*.py',
   ],
   darkMode: 'class',
   theme: {
